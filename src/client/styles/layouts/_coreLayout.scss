@@ -1,0 +1,16 @@
+.core-layout {
+	display: flex;
+	margin: 0 auto;
+	position: relative;
+	&__content {
+		box-shadow: $box-shadow-default;
+		background: $white;
+		flex-grow: 1;
+		height: 100vh;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+	.main {
+		min-width: 27rem;
+	}
+}

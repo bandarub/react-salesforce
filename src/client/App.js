@@ -1,23 +1,63 @@
 import React, { Component } from 'react';
-import './app.css';
-import ReactImage from './react.png';
+import { BrowserRouter as Router, Route, Link, Switch, withRouter } from 'react-router-dom';
 
-export default class App extends Component {
-  state = { username: null };
+import Home from './pages/Home';
+import Properties from './pages/Properties';
+import Brokers from './pages/Brokers';
+import Favorites from './pages/Favorites';
 
-  componentDidMount() {
-    fetch('/api/getUsername')
-      .then(res => res.json())
-      .then(user => this.setState({ username: user.username }));
+import CoreLayout from './shared/layouts/CoreLayout';
+import PropertyDetail from './shared/components/PropertyDetail';
+import Broker from './shared/components/Broker';
+
+import { routerPath, pageTitle } from './constants';
+
+class App extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			data: null
+		};
   }
-
-  render() {
-    const { username } = this.state;
-    return (
-      <div>
-        {username ? <h1>{`Hello ${username}`}</h1> : <h1>Loading.. please wait!</h1>}
-        <img src={ReactImage} alt="react" />
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div>
+				<Router>
+					<CoreLayout>
+						<Switch>
+							<Route exact component={() => <Home title={pageTitle.home} />} path="/" />
+							<Route exact component={() => <Home title={pageTitle.home} />} path="/home" />
+							<Route
+								exact
+								component={() => <Properties title={pageTitle.properties} />}
+								path={routerPath.properties}
+							/>
+							<Route
+								exact
+								component={() => <Brokers title={pageTitle.brokers} />}
+								path={routerPath.brokers}
+							/>
+							<Route
+								exact
+								component={() => <Favorites title={pageTitle.favorites} />}
+								path={routerPath.favorites}
+							/>
+							<Route
+								exact
+								component={() => <PropertyDetail/>}
+								path={routerPath.property}
+							/>
+							<Route
+								exact
+								component={() => <Broker/>}
+								path={routerPath.broker}
+							/>
+						</Switch>
+					</CoreLayout>
+				</Router>
+			</div>
+		);
+	}
 }
+
+export default App;

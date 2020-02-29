@@ -1,0 +1,32 @@
+.home{
+    .pageNumbers{
+        display: flex;
+        justify-content: space-between;
+        width:10rem;
+        margin:0 auto;
+        .page{
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+        .activePage{
+            color:$green;
+        }
+
+    }
+    .item{
+        position: relative;
+        img{
+            width:100%;
+            height: 80vh;
+        }
+        &__note{
+            position: absolute;
+            bottom:5rem;
+            padding:2rem;
+            background: $green;
+            color:$white;
+            font-size:2rem;
+        }
+
+    }
+}

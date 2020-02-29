@@ -1,0 +1,61 @@
+.sideBar {
+	transition: width 0.2s;
+	position: relative;
+	&__content {
+		width: 20rem;
+		position: relative;
+		max-height: 100vh;
+		overflow: auto;
+		padding-top: 5rem;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		&::-webkit-scrollbar {
+			width: 0px;
+			/* Remove scrollbar space */
+			background: transparent;
+			/* Optional: just make scrollbar invisible */
+		}
+		&.hide {
+			display: none;
+		}
+		.nav {
+			width: 100%;
+			&__navItem {
+				padding: 1rem 0;
+				padding-left: 2rem;
+				display: flex;
+				align-items: center;
+				i {
+					font-size: 1.8rem;
+				}
+				a {
+					text-decoration: none;
+					font-size: 1.8rem;
+					margin-left: 1rem;
+				}
+				&:hover,
+				&.active {
+					background:$green;
+					border-right: 3.5px solid $white;
+				}
+			}
+		}
+	}
+	.toggleIcon {
+		position: absolute;
+		bottom: 0.5rem;
+		right: -5rem;
+		font-size: $toggleIconSize;
+		cursor: pointer;
+		transition: right 0.2s;
+		color: $green;
+		z-index: 999;
+	}
+	.toggleOut {
+		right: -1rem;
+		transform: rotate(180deg);
+	}
+}

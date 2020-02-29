@@ -1,0 +1,24 @@
+.properties {
+	display: flex;
+	flex-direction: column;
+
+	input {
+		margin: 2rem;
+		padding: 0 2rem;
+	}
+	input,
+	input::-webkit-input-placeholder {
+		font-size: 20px;
+		line-height: 3;
+	}
+	&__list {
+		display: flex;
+		flex-direction: column;
+		padding: 2rem;
+		a {
+			text-decoration: none;
+		}
+
+		
+	}
+}
