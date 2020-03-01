@@ -44,7 +44,7 @@ class BrokerDetail extends Component {
 	    }
 	  ];
 	  return data.map((item, key) => (
-  <div className="brokerDetails__info-details">
+  <div className="brokerDetails__info-details" key={key}>
     <i className="material-icons">{item.icon}</i>
     <h2>{item.text}</h2>
     <p>{item.value}</p>
