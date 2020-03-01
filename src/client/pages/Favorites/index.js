@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter,Link } from 'react-router-dom';
 
 import Heading from '../../shared/components/Heading';
 import ListItem from '../../shared/components/ListItem';
@@ -19,12 +19,15 @@ class Favorites extends Component {
       .then(data => this.setState({ favorites: data }));
   }
 
+	onItemSelect = (prop) => {
+	  const { history } = this.props;
+	  history.push(`/property/${prop.sfid}`);
+	};
+
 	renderList = () => {
 	  const { favorites } = this.state;
 	  return favorites.map((data, key) => (
-  <Link key={key} to={`/property/${data.sfid}`}>
-    <ListItem item={normalizeProperty(data)} />
-  </Link>
+  <ListItem item={normalizeProperty(data)} key={key} data={data} onClick={this.onItemSelect} />
 	  ));
 	};
 
@@ -35,11 +38,11 @@ class Favorites extends Component {
 	  }
 	  return (
   <div className="favorites">
-    <Heading title="Favorites"/>
+    <Heading title="Favorites" />
     <div className="favorites__list">{this.renderList()}</div>
   </div>
 	  );
 	}
 }
 
-export default Favorites;
+export default withRouter(Favorites);

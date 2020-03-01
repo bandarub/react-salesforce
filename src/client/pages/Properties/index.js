@@ -35,7 +35,7 @@ class Properties extends Component {
         filteredProperties
       }) 
   }
-  onItemSelect = (property) => {
+  onItemSelect = (prop) => {
     const { history } = this.props;
     history.push(`/property/${prop.sfid}`);
   };
@@ -46,7 +46,7 @@ class Properties extends Component {
         return
     } 
       return filteredProperties.map((prop,key)=>
-        <ListItem item={normalizeProperty(prop)} key={key} data={prop} onClick={this.onItemClick}/>
+        <ListItem item={normalizeProperty(prop)} key={key} data={prop} onClick={this.onItemSelect}/>
      )
   }
   

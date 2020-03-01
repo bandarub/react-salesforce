@@ -41,10 +41,11 @@ class Home extends Component {
   <Heading title="Welcome"/>
     {this.renderPage()}
     <div className="pageNumbers">
-      {pageNumbers.map(item => (
+      {pageNumbers.map((item,key) => (
         <div
           className={selectedPage === item ? 'page activePage' : 'page'}
-          onClick={() => this.onNumberClick(item)}
+		  onClick={() => this.onNumberClick(item)}
+		  key={key}
         >
           {item}
         </div>
