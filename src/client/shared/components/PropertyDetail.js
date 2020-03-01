@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 
 import Heading from './Heading';
-import { formatter } from '../../constants';
+import { formatter } from '../../utils';
 
 class PropertyDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
       property: null,
-      brokers: null
+      brokers: null,
     };
   }
 
@@ -21,6 +21,7 @@ class PropertyDetail extends Component {
     fetch('http://localhost:8080/broker')
       .then(response => response.json())
       .then(data => this.setState({ brokers: data }));
+   
   }
 
 	renderItem = () => {
@@ -70,7 +71,9 @@ class PropertyDetail extends Component {
             <span className="subSec__number">{item.number}</span>
           </div>
         ))}
-        <Link to={`/broker/${relatedBroker.sfid}`}>
+        <Link
+          to={`/broker/${relatedBroker.sfid}`}
+        >
           <div className="broker">
             <div className="broker__image">
               <img src={relatedBroker.picture__c} alt="brokerImg" />
@@ -88,13 +91,19 @@ class PropertyDetail extends Component {
 	};
 
 	render() {
-	  const { property, brokers } = this.state;
+    const { property, brokers, prevPath } = this.state;
+    const {location}=this.props
 	  if (!property || !brokers || brokers.length === 0) {
 	    return null;
 	  }
 	  return (
   <div className="property">
-    <Heading title={property.title__c} isBack />
+    <Heading
+      title={property.title__c}
+      linkTitle="Back"
+      icon="keyboard_arrow_left"
+      link={true}
+    />
     {this.renderItem()}
   </div>
 	  );

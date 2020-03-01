@@ -2,9 +2,8 @@
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
+    cursor: pointer;
     &__thumbnail {
-        min-width: 5.6rem;
-        min-height: 5.6rem;
         img {
             max-width: 5.6rem;
             max-height: 5.6rem;

@@ -8,7 +8,7 @@ import Favorites from './pages/Favorites';
 
 import CoreLayout from './shared/layouts/CoreLayout';
 import PropertyDetail from './shared/components/PropertyDetail';
-import Broker from './shared/components/Broker';
+import BrokerDetails from './shared/components/BrokerDetails';
 
 import { routerPath, pageTitle } from './constants';
 
@@ -49,7 +49,7 @@ class App extends Component {
 							/>
 							<Route
 								exact
-								component={() => <Broker/>}
+								component={() => <BrokerDetails/>}
 								path={routerPath.broker}
 							/>
 						</Switch>

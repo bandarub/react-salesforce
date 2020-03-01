@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import {withRouter,Link} from 'react-router-dom';
 
 import Heading from '../../shared/components/Heading'
-import PropertyListItem from '../../shared/components/PropertyListItem'
+import ListItem from '../../shared/components/ListItem'
 
 import {formatter} from '../../constants'
+import {normalizeProperty} from '../../utils'
 
 class Properties extends Component {
   constructor(props) {
@@ -34,22 +35,26 @@ class Properties extends Component {
         filteredProperties
       }) 
   }
+  onItemSelect = (property) => {
+    const { history } = this.props;
+    history.push(`/property/${prop.sfid}`);
+  };
 
   renderList = () =>{
       const {filteredProperties} = this.state
       if(!filteredProperties){
         return
-    }
-      return filteredProperties.map((item,key)=><Link key={key} to={`/property/${item.sfid}`}>
-        <PropertyListItem item={item} />
-      </Link>)
+    } 
+      return filteredProperties.map((prop,key)=>
+        <ListItem item={normalizeProperty(prop)} key={key} data={prop} onClick={this.onItemClick}/>
+     )
   }
+  
 
   render() {
       const {searchInput,properties}=this.state
-      console.log(properties)
     return <div className="properties">
-    <Heading title="Properties"/>
+    <Heading title="Properties" link={false}/>
     <input value={searchInput} placeholder="Type property title to search...." onChange={this.onFieldChange}/>
     <div className="properties__list">
     {this.renderList()}
@@ -57,4 +62,4 @@ class Properties extends Component {
   }
 }
 
-export default Properties;
+export default withRouter(Properties);

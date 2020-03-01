@@ -1,12 +1,19 @@
 .heading {
 	display: flex;
 	align-items: center;
-	a {
-		font-size: 1.5rem;
+	.link {
+		font-size: 1.75rem;
 		color: $white;
 		text-align: center;
         text-decoration: none;
         padding-left:2rem;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        justify-content: flex-start;
+        i{
+            font-size: 3rem;
+        }
 	}
 	background: $green;
 	padding: 0.1rem;
