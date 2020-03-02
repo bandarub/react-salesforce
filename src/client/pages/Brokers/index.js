@@ -14,7 +14,7 @@ class Brokers extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:8080/broker')
+    fetch('/broker')
       .then(response => response.json())
       .then(data => this.setState({ brokers: data }));
   }
@@ -33,13 +33,13 @@ class Brokers extends Component {
 
 	render() {
 	  const { brokers } = this.state;
-	  if (!brokers || brokers.length === 0) {
-	    return null;
-	  }
+	  
 	  return (
   <div className="brokers">
     <Heading title="Brokers" />
-    <div className="brokers__list">{this.renderList()}</div>
+	{(!brokers || brokers.length === 0)?null: <div className="brokers__list">{this.renderList()}</div>
+	  }
+   
   </div>
 	  );
 	}

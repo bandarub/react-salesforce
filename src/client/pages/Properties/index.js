@@ -18,7 +18,7 @@ class Properties extends Component {
   }
 
  componentDidMount() {
-    fetch('http://localhost:8080/property')
+    fetch('/property')
       .then(response => response.json())
       .then(data => this.setState({ properties: data,filteredProperties:data }));
   }

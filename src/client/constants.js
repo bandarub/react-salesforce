@@ -4,8 +4,8 @@ import image3 from './assets/images/slide_favorites.jpg';
 
 export const routerPath = {
     home:'/home',
-    brokers:'/brokers',
-    favorites:'/favorites',
+    brokers:'/broker',
+    favorites:'/favorite',
     properties:'/property',
     property:'/property/:id',
     broker:'/broker/:id'

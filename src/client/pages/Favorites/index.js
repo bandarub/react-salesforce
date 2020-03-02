@@ -14,7 +14,7 @@ class Favorites extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:8080/favorite')
+    fetch('/favorite')
       .then(response => response.json())
       .then(data => this.setState({ favorites: data }));
   }
@@ -33,13 +33,11 @@ class Favorites extends Component {
 
 	render() {
 	  const { favorites } = this.state;
-	  if (!favorites || favorites.length === 0) {
-	    return null;
-	  }
 	  return (
   <div className="favorites">
     <Heading title="Favorites" />
-    <div className="favorites__list">{this.renderList()}</div>
+	{(!favorites || favorites.length === 0) ? null:<div className="favorites__list">{this.renderList()}</div>}
+    
   </div>
 	  );
 	}
