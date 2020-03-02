@@ -151,7 +151,7 @@ app.post('/favorite', function(req, res) {
 });
 
 app.delete('/favorite/:sfid', function(req, res) {
-	client.query('DELETE FROM ' + favoriteTable + ` WHERE sfid = ${req.params.sfid}`, [req.params.sfid], function(error, data) {
+	client.query('DELETE FROM ' + favoriteTable + 'WHERE sfid = ($1)' , [req.params.sfid], function(error, data) {
 		res.json(data);
 	});
 });

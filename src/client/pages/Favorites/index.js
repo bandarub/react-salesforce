@@ -27,7 +27,7 @@ class Favorites extends Component {
 	renderList = () => {
 	  const { favorites } = this.state;
 	  return favorites.map((data, key) => (
-  <ListItem item={normalizeProperty(data)} key={key} data={data} onClick={this.onItemSelect} onClickDelete={this.onFavDelete}/>
+  <ListItem item={normalizeProperty(data)} key={key} data={data} onClick={this.onItemSelect} deletable={false} onClickDelete={this.onFavDelete}/>
 	  ));
 	};
   onFavDelete=(item)=>{
