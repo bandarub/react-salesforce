@@ -4,8 +4,8 @@ import image1 from '../../assets/images/slide_properties.jpg';
 import image2 from '../../assets/images/slide_brokers.jpg';
 import image3 from '../../assets/images/slide_favorites.jpg';
 
-import {data} from '../../constants'
-import Heading from '../../shared/components/Heading'
+import { data } from '../../constants';
+import Heading from '../../shared/components/Heading';
 
 class Home extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class Home extends Component {
 	  const { selectedPage } = this.state;
 	  return data.map(
 	    (item, key) => selectedPage === item.id && (
-					<div key={key} className="item">
+					<div key={key} className="item">¨
   <img src={item.image} />
   <div className="item__note">{item.note}</div>
 					</div>
@@ -38,14 +38,14 @@ class Home extends Component {
 	  const { selectedPage } = this.state;
 	  return (
   <div className="home">
-  <Heading title="Welcome"/>
+    <Heading title="Welcome" />
     {this.renderPage()}
     <div className="pageNumbers">
-      {pageNumbers.map((item,key) => (
+      {pageNumbers.map((item, key) => (
         <div
           className={selectedPage === item ? 'page activePage' : 'page'}
-		  onClick={() => this.onNumberClick(item)}
-		  key={key}
+          onClick={() => this.onNumberClick(item)}
+          key={key}
         >
           {item}
         </div>

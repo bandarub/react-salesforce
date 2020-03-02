@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-
+import axios from 'axios';
 import Heading from '../../shared/components/Heading';
 import ListItem from '../../shared/components/ListItem';
 import { normalizeBrokerData } from '../../utils';
@@ -14,9 +14,8 @@ class Brokers extends Component {
   }
 
   componentDidMount() {
-    fetch('/broker')
-      .then(response => response.json())
-      .then(data => this.setState({ brokers: data }));
+    axios.get('/broker')
+      .then(res => this.setState({ brokers: res.data }))
   }
 
 	onItemSelect = (broker) => {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter, Link, useHistory } from 'react-router-dom';
+import axios from 'axios';
 import Heading from './Heading';
 
 class BrokerDetail extends Component {
@@ -12,10 +13,8 @@ class BrokerDetail extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    console.log(id);
-    fetch(`http://localhost:8080/broker/${id}`)
-      .then(response => response.json())
-      .then(data => this.setState({ brokerData: data }));
+    axios.get(`http://localhost:8080/broker/${id}`)
+      .then(res => this.setState({ brokerData: res.data }))
   }
 
 	renderData = () => {
@@ -44,10 +43,21 @@ class BrokerDetail extends Component {
 	    }
 	  ];
 	  return data.map((item, key) => (
-  <div className="brokerDetails__info-details" key={key}>
+  <div className="item" key={key}>
     <i className="material-icons">{item.icon}</i>
-    <h2>{item.text}</h2>
-    <p>{item.value}</p>
+    <div className="item__details">
+      {item.text === 'Email' ? (
+        <a href={`mailto:${item.value}`} target="_blank">
+          <label>{item.text}</label>
+          <p>{item.value}</p>
+        </a>
+      ) : (
+        <div>
+          <label>{item.text}</label>
+          <p>{item.value}</p>
+        </div>
+      )}
+    </div>
   </div>
 	  ));
 	};
@@ -67,7 +77,10 @@ class BrokerDetail extends Component {
         <h2>{name}</h2>
         <p>{title__c}</p>
       </div>
-      {this.renderData()}
+      <div className="brokerDetails__info-list">
+        {' '}
+        {this.renderData()}
+      </div>
     </div>
   </div>
 	  );

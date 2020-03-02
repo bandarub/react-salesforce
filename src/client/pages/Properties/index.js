@@ -3,6 +3,7 @@ import {withRouter,Link} from 'react-router-dom';
 
 import Heading from '../../shared/components/Heading'
 import ListItem from '../../shared/components/ListItem'
+import axios from 'axios';
 
 import {formatter} from '../../constants'
 import {normalizeProperty} from '../../utils'
@@ -18,9 +19,9 @@ class Properties extends Component {
   }
 
  componentDidMount() {
-    fetch('/property')
-      .then(response => response.json())
-      .then(data => this.setState({ properties: data,filteredProperties:data }));
+    axios.get('/property')
+      .then(res => this.setState({ properties: res.data,filteredProperties:res.data }))
+      .catch(err=>console.log("error:",err))
   }
 
   onFieldChange=(e)=>{

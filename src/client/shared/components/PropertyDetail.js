@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 
 import Heading from './Heading';
+import axios from 'axios';
 import { formatter } from '../../utils';
 
 class PropertyDetail extends Component {
@@ -15,13 +16,10 @@ class PropertyDetail extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    fetch(`http://localhost:8080/property/${id}`)
-      .then(response => response.json())
-      .then(data => this.setState({ property: data }));
-    fetch('http://localhost:8080/broker')
-      .then(response => response.json())
-      .then(data => this.setState({ brokers: data }));
-   
+    axios.get(`http://localhost:8080/property/${id}`)
+      .then(res => this.setState({ property: res.data }))
+    axios.get('http://localhost:8080/broker')
+      .then(res => this.setState({ brokers: res.data }))   
   }
 
 	renderItem = () => {

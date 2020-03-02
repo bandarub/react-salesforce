@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch, withRouter } from 'react-router-dom';
+import { HashRouter, Route, Link, Switch, withRouter } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Properties from './pages/Properties';
@@ -22,7 +22,7 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-				<Router>
+				<HashRouter>
 					<CoreLayout>
 						<Switch>
 							<Route exact component={() => <Home title={pageTitle.home} />} path="/" />
@@ -54,7 +54,7 @@ class App extends Component {
 							/>
 						</Switch>
 					</CoreLayout>
-				</Router>
+				</HashRouter>
 			</div>
 		);
 	}

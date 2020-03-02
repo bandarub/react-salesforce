@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter,Link } from 'react-router-dom';
+import axios from 'axios';
 
 import Heading from '../../shared/components/Heading';
 import ListItem from '../../shared/components/ListItem';
@@ -14,9 +15,8 @@ class Favorites extends Component {
   }
 
   componentDidMount() {
-    fetch('/favorite')
-      .then(response => response.json())
-      .then(data => this.setState({ favorites: data }));
+    axios.get('/favorite')
+      .then(res => this.setState({ favorites: res.data }))
   }
 
 	onItemSelect = (prop) => {
