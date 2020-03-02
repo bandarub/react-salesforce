@@ -11,7 +11,13 @@ app.use(express.static('www'));
 app.use(express.static(path.join('www', 'build')));
 
 app.use(bodyParser.json());
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static( 'client/build' ));
 
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html')); // relative path
+    });
+}
 var connectionString = process.env.DATABASE_URL || 'postgres://postgres:1234@localhost:5432/salesforce';
 
 

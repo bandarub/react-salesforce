@@ -1,7 +1,14 @@
 {
-  "name": "simple-react-full-stack",
+    "name": "dreamhouse-web-app",
+    "description": "DreamHouse Web App",
+    "keywords": [
+      "app-cloud"
+    ],
+    "repository": "https://github.com/bandarub/react-salesforce",
+    "addons": [
+      "heroku-postgresql"
+    ],
   "version": "1.0.0",
-  "description": "Boilerplate to build a full stack web application using React, Node.js, Express and Webpack.",
   "main": "src/server/index.js",
   "scripts": {
     "build": "webpack --mode production",
@@ -23,6 +30,7 @@
     "sass": "^1.26.2",
     "sass-loader": "^8.0.2"
   },
+  
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
