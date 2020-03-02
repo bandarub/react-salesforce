@@ -11,19 +11,40 @@ class PropertyDetail extends Component {
     this.state = {
       property: null,
       brokers: null,
+      favorites:null,
+      isFavorite:false
     };
   }
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    axios.get(`http://localhost:8080/property/${id}`)
+    axios.get(`/property/${id}`)
       .then(res => this.setState({ property: res.data }))
-    axios.get('http://localhost:8080/broker')
+    axios.get('/broker')
       .then(res => this.setState({ brokers: res.data }))   
+    axios.get('/favorite')
+      .then(res => this.setState({ favorites: res.data }))   
   }
+  onFavAdd = () =>{
+    const { property,favorites } = this.state;
+    axios.post("/favorite",{property__c:property.sfid})
+      .then(res=>{
+        if(res.data){
+       alert("Property added to favorites")
+        }
+      })
+      .catch(err=>console.log(err))
 
-	renderItem = () => {
-	  const { property, brokers } = this.state;
+  }
+  onBrokerClick = (id)=>{
+    this.props.history.push(`/broker/${id}`)
+  }
+	renderItem = () =>{
+    const { property, brokers,favorites } = this.state;
+    if(!property||!brokers||brokers.length===0||!favorites||favorites.length===0){
+      return null
+    }
+    const fav = favorites.find(item=>item.sfid===property.sfid)
 	  const {
 	    picture__c, beds__c, baths__c, price__c, title__c, city__c, state__c, broker__c
 	  } = property;
@@ -50,6 +71,7 @@ class PropertyDetail extends Component {
     <img src={picture__c} />
     <div className="property__details">
       <div className="property__details-sec1">
+        <div>
         <h2 className="title">{title__c}</h2>
         <p className="desc">
           {city__c}
@@ -58,6 +80,12 @@ class PropertyDetail extends Component {
           -
           {formatter.format(price__c)}
         </p>
+        </div>
+        <div onClick={fav?()=>{}:this.onFavAdd}>
+    <i className="material-icons">
+{fav ?"star":<label title="Add to favorites">star_border</label>}
+</i>
+    </div>
       </div>
       <div className="property__details-sec2">
         {sec2Data.map((item, key) => (
@@ -69,10 +97,7 @@ class PropertyDetail extends Component {
             <span className="subSec__number">{item.number}</span>
           </div>
         ))}
-        <Link
-          to={`/broker/${relatedBroker.sfid}`}
-        >
-          <div className="broker">
+          <div className="broker" onClick={()=>this.onBrokerClick(relatedBroker.sfid)}>
             <div className="broker__image">
               <img src={relatedBroker.picture__c} alt="brokerImg" />
             </div>
@@ -81,7 +106,6 @@ class PropertyDetail extends Component {
               <p>{relatedBroker.title__c}</p>
             </div>
           </div>
-        </Link>
       </div>
     </div>
   </div>

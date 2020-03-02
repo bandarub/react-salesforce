@@ -13,6 +13,9 @@
 		&-sec1 {
 			border-bottom: 1px solid #c8c7cc;
 			padding-bottom: 2rem;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
 			.title {
 				margin: 0 0 2px;
 				font-size: 1.6rem;
@@ -24,6 +27,11 @@
 				font-size: 1.2rem;
 				line-height: normal;
 				color: #666;
+			}
+			i{
+				font-size: 2rem;
+				color:$green;
+
 			}
 		}
 		&-sec2 {

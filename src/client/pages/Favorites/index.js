@@ -27,10 +27,12 @@ class Favorites extends Component {
 	renderList = () => {
 	  const { favorites } = this.state;
 	  return favorites.map((data, key) => (
-  <ListItem item={normalizeProperty(data)} key={key} data={data} onClick={this.onItemSelect} />
+  <ListItem item={normalizeProperty(data)} key={key} data={data} onClick={this.onItemSelect} onClickDelete={this.onFavDelete}/>
 	  ));
 	};
-
+  onFavDelete=(item)=>{
+    axios.delete(`/favorite/${item.sfid}`).then(res=>console.log(res))
+  }
 	render() {
 	  const { favorites } = this.state;
 	  return (
