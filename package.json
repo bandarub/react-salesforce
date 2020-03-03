@@ -8,9 +8,6 @@
   "addons": [
     "heroku-postgresql"
   ],
-  "engines": {
-    "node": "v8.11.1"
-  },
   "version": "1.0.0",
   "main": "src/server/index.js",
   "scripts": {
@@ -21,7 +18,7 @@
     "server": "nodemon src/server/index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "author": "Sandeep Raveesh",
+  "author": "Sravanthi Bandaru",
   "license": "ISC",
   "dependencies": {
     "babel-polyfill": "^6.26.0",
@@ -39,6 +36,7 @@
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
+    "axios": "^0.19.2",
     "babel-eslint": "^10.0.0",
     "babel-loader": "^8.0.0",
     "clean-webpack-plugin": "^1.0.0",

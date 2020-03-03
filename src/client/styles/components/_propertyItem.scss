@@ -31,7 +31,10 @@
 			i{
 				font-size: 2rem;
 				color:$green;
-
+				cursor:pointer;
+			}
+			label{
+				cursor: pointer;
 			}
 		}
 		&-sec2 {
