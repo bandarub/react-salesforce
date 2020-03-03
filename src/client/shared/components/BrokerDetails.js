@@ -13,7 +13,7 @@ class BrokerDetail extends Component {
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    axios.get(`http://localhost:8080/broker/${id}`)
+    axios.get(`/broker/${id}`)
       .then(res => this.setState({ brokerData: res.data }))
   }
 
