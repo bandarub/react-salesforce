@@ -7,8 +7,8 @@ var {Pool} = require('pg');
 
 var app = express();
 
-app.use(express.static('www'));
-app.use(express.static(path.join('www', 'build')));
+app.use(express.static('client'));
+app.use(express.static(path.join('client', 'build')));
 
 app.use(bodyParser.json());
 var connectionString = process.env.DATABASE_URL || 'postgres://postgres:1234@localhost:5432/salesforce';
@@ -25,7 +25,6 @@ var brokerTable = 'broker__c';
 
 // setup the demo data if needed
 client.query('SELECT * FROM salesforce.broker__c', function(error, data) {
-	console.log(error)
 	if (error !== null) {
 		client.query(`CREATE TABLE broker__c (
 			id SERIAL NOT NULL,
@@ -63,7 +62,7 @@ client.query('SELECT * FROM salesforce.broker__c', function(error, data) {
 			sfid CHARACTER VARYING(18) UNIQUE,
 			property__c CHARACTER VARYING(18) REFERENCES property__c(sfid)
 		   );`);
-		   
+		   //for initial setup of data
 		client.query('SELECT * FROM broker__c', function(error, data) {
 		  if (error !== null) {
 			console.log('Loading Demo Data...');
