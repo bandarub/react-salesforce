@@ -9,7 +9,8 @@
 	"main": "src/server/index.js",
 	"scripts": {
 		"postinstall": "npm run webpack",
-		"webpack": "webpack",
+    "webpack": "webpack",
+    "build": "./node_modules/.bin/webpack --config webpack.conf.js",
 		"heroku-prebuild": "npm install --dev",
 		"heroku-postbuild": "export NPM_CONFIG_PRODUCTION=true; export NODE_ENV=production;",
 		"start": "npm run build && node src/server/index.js",
