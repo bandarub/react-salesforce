@@ -11,7 +11,7 @@ var app = express();
 app.use(express.static("dist"));
 
 app.use(bodyParser.json());
-var connectionString = process.env.DATABASE_URL || 'postgres://postgres:test1234@localhost:5432/salesforce';
+var connectionString = process.env.HEROKU_POSTGRESQL_GRAY_URL || 'postgres://postgres:test1234@localhost:5432/salesforce';
 
 if (process.env.DATABASE_URL !== undefined) {
 	pg.defaults.ssl = true;
