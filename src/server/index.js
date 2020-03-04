@@ -7,7 +7,7 @@ var {Pool} = require('pg');
 
 var app = express();
 
-//app.use(express.static("dist"));
+app.use(express.static("dist"));
 
 app.use(bodyParser.json());
 var connectionString = process.env.DATABASE_URL || 'postgres://postgres:1234@localhost:5432/salesforce';
