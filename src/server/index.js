@@ -4,6 +4,7 @@ var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser');
 var {Pool} = require('pg');
+var pg = require('pg');
 
 var app = express();
 
