@@ -10,6 +10,7 @@ module.exports = {
     path: path.join(__dirname, outputDirectory),
     filename: 'bundle.js'
   },
+  externals: ['tls', 'net', 'fs'],
   module: {
     rules: [{
         test: /\.(js|jsx)$/,
@@ -35,7 +36,7 @@ module.exports = {
     port: 3000,
     open: true,
     proxy: {
-      '/': 'http://localhost:8080/'
+      '/': 'http://localhost:5000/'
     },
     historyApiFallback: true
   },

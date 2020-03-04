@@ -30,8 +30,12 @@
     "react-router-dom": "^5.1.2",
     "sass": "^1.26.2",
     "sass-loader": "^8.0.2",
+<<<<<<< HEAD
     "webpack": "^4.5.0",
 
+=======
+    "webpack": "^4.5.0"
+>>>>>>> b5a6998e98cf5d0c77e08376d22fd6d0a86a4578
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
