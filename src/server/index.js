@@ -11,7 +11,7 @@ var app = express();
 app.use(express.static("dist"));
 
 app.use(bodyParser.json());
-var connectionString = process.env.DATABASE_URL || 'postgres://purezhwtekqdkk:cd5b2d197a17a52551d1a98604d161e446c41907e1c03510c94b6fd33b0381a0@ec2-52-202-185-87.compute-1.amazonaws.com:5432/d3205a6i0edh82';
+var connectionString = process.env.DATABASE_URL || 'postgres://postgres:test1234@localhost:5432/salesforce';
 
 if (process.env.DATABASE_URL !== undefined) {
 	pg.defaults.ssl = true;
