@@ -4,11 +4,10 @@ var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser');
 var {Pool} = require('pg');
-const router = express.Router();
 
 var app = express();
 
-app.use(express.static("dist"));
+//app.use(express.static("dist"));
 
 app.use(bodyParser.json());
 var connectionString = process.env.DATABASE_URL || 'postgres://postgres:1234@localhost:5432/salesforce';
@@ -80,14 +79,14 @@ client.query('SELECT * FROM salesforce.broker__c', function(error, data) {
 });
 
 
-router.get('/property', function(req, res) {
+app.get('/property', function(req, res) {
 	client.query('SELECT * FROM ' + propertyTable, function(error, data) {
 		console.log(error)
 		res.json(data.rows);
 	});
 });
 
-router.get('/property/:id', function(req, res) {
+app.get('/property/:id', function(req, res) {
 	client.query(
 		'SELECT ' +
 			propertyTable +
@@ -123,7 +122,7 @@ router.get('/property/:id', function(req, res) {
 	);
 });
 
-router.get('/favorite', function(req, res) {
+app.get('/favorite', function(req, res) {
 	client.query(
 		'SELECT ' +
 			propertyTable +
@@ -144,7 +143,7 @@ router.get('/favorite', function(req, res) {
 	);
 });
 
-router.post('/favorite', function(req, res) {
+app.post('/favorite', function(req, res) {
 	client.query('INSERT INTO ' + favoriteTable + ' (property__c) VALUES ($1)', [req.body.property__c], function(
 		error,
 		data
@@ -153,25 +152,25 @@ router.post('/favorite', function(req, res) {
 	});
 });
 
-router.delete('/favorite/:sfid', function(req, res) {
+app.delete('/favorite/:sfid', function(req, res) {
 	client.query('DELETE FROM ' + favoriteTable + 'WHERE sfid = ($1)' , [req.params.sfid], function(error, data) {
 		res.json(data);
 	});
 });
 
-router.get('/broker', function(req, res) {
+app.get('/broker', function(req, res) {
 	client.query('SELECT * FROM ' + brokerTable, function(error, data) {
 		res.json(data.rows);
 	});
 });
 
-router.get('/broker/:sfid', function(req, res) {
+app.get('/broker/:sfid', function(req, res) {
 	client.query('SELECT * FROM ' + brokerTable + ' WHERE sfid = $1', [req.params.sfid], function(error, data) {
 		res.json(data.rows[0]);
 	});
 });
 
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 5000;
 
 app.listen(port);
 
