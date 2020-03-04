@@ -4,6 +4,7 @@ var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser');
 var {Pool} = require('pg');
+const router = express.Router();
 
 var app = express();
 
@@ -79,14 +80,14 @@ client.query('SELECT * FROM salesforce.broker__c', function(error, data) {
 });
 
 
-app.get('/property', function(req, res) {
+router.get('/property', function(req, res) {
 	client.query('SELECT * FROM ' + propertyTable, function(error, data) {
 		console.log(error)
 		res.json(data.rows);
 	});
 });
 
-app.get('/property/:id', function(req, res) {
+router.get('/property/:id', function(req, res) {
 	client.query(
 		'SELECT ' +
 			propertyTable +
@@ -122,7 +123,7 @@ app.get('/property/:id', function(req, res) {
 	);
 });
 
-app.get('/favorite', function(req, res) {
+router.get('/favorite', function(req, res) {
 	client.query(
 		'SELECT ' +
 			propertyTable +
@@ -143,7 +144,7 @@ app.get('/favorite', function(req, res) {
 	);
 });
 
-app.post('/favorite', function(req, res) {
+router.post('/favorite', function(req, res) {
 	client.query('INSERT INTO ' + favoriteTable + ' (property__c) VALUES ($1)', [req.body.property__c], function(
 		error,
 		data
@@ -152,19 +153,19 @@ app.post('/favorite', function(req, res) {
 	});
 });
 
-app.delete('/favorite/:sfid', function(req, res) {
+router.delete('/favorite/:sfid', function(req, res) {
 	client.query('DELETE FROM ' + favoriteTable + 'WHERE sfid = ($1)' , [req.params.sfid], function(error, data) {
 		res.json(data);
 	});
 });
 
-app.get('/broker', function(req, res) {
+router.get('/broker', function(req, res) {
 	client.query('SELECT * FROM ' + brokerTable, function(error, data) {
 		res.json(data.rows);
 	});
 });
 
-app.get('/broker/:sfid', function(req, res) {
+router.get('/broker/:sfid', function(req, res) {
 	client.query('SELECT * FROM ' + brokerTable + ' WHERE sfid = $1', [req.params.sfid], function(error, data) {
 		res.json(data.rows[0]);
 	});
