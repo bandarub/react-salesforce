@@ -10,7 +10,7 @@ var app = express();
 app.use(express.static("dist"));
 
 app.use(bodyParser.json());
-var connectionString = process.env.DATABASE_URL || 'postgres://postgres:test1234@localhost:5432/salesforce';
+var connectionString = process.env.DATABASE_URL || 'postgres://postgres:1234@localhost:5432/salesforce';
 
 
 const client = new Pool({
@@ -81,6 +81,7 @@ client.query('SELECT * FROM salesforce.broker__c', function(error, data) {
 
 app.get('/property', function(req, res) {
 	client.query('SELECT * FROM ' + propertyTable, function(error, data) {
+		console.log(error)
 		res.json(data.rows);
 	});
 });
