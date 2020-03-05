@@ -28,12 +28,13 @@ var brokerTable = 'broker__c';
 
 // setup the demo data if needed
 client.query('SELECT * FROM salesforce.broker__c', function(error, data) {
-	console.log("connectionString",connectionString)
 
 	if (error !== null) {
 		   //for initial setup of data
 		client.query('SELECT * FROM broker__c', function(error, data) {
 		  if (error !== null) {
+			console.log("connectionString",connectionString)
+
 			console.log('Loading Demo Data...');
 			require('./db/index.js')(client);
 			console.log('Done Loading Demo Data!');
