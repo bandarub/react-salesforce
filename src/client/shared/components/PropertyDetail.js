@@ -13,7 +13,7 @@ class PropertyDetail extends Component {
       brokers: null,
       favorites: null,
       isFavorite: false,
-      selected:false
+      selected: false
     };
   }
 
@@ -40,11 +40,11 @@ class PropertyDetail extends Component {
   onBrokerClick = (id) => {
     this.props.history.push(`/broker/${id}`)
   }
-  changeSelected = () =>{
-    this.setState({selected:true})
+  changeSelected = () => {
+    this.setState({ selected: true })
   }
   renderItem = () => {
-    const { property, brokers, favorites,selected } = this.state;
+    const { property, brokers, favorites, selected } = this.state;
     if (!property || !brokers || brokers.length === 0 || !favorites || favorites.length === 0) {
       return null
     }
@@ -52,6 +52,7 @@ class PropertyDetail extends Component {
     const {
       picture__c, beds__c, baths__c, price__c, title__c, city__c, state__c, broker__c
     } = property;
+    console.log(property)
     const relatedBroker = brokers.find(item => item.sfid === broker__c);
     const sec2Data = [
       {
@@ -70,7 +71,7 @@ class PropertyDetail extends Component {
         number: formatter.format(price__c)
       }
     ];
-    
+
     return (
       <div className="property__item">
         <img src={picture__c} />
@@ -88,7 +89,7 @@ class PropertyDetail extends Component {
             </div>
             <div onClick={fav ? () => { } : this.onFavAdd}>
               <i className="material-icons">
-                {fav ? "star" : <label title="Add to favorites" onClick={this.changeSelected}>{selected ? "star" :"star_border"}</label>}
+                {fav ? "star" : <label title="Add to favorites" onClick={this.changeSelected}>{selected ? "star" : "star_border"}</label>}
               </i>
             </div>
           </div>

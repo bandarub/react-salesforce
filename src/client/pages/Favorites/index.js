@@ -38,7 +38,7 @@ class Favorites extends Component {
 	  return (
   <div className="favorites">
     <Heading title="Favorites" />
-	{(!favorites || favorites.length === 0) ? null:<div className="favorites__list">{this.renderList()}</div>}
+	{(!favorites || favorites.length === 0) ? <div>No favorite list</div>:<div className="favorites__list">{this.renderList()}</div>}
     
   </div>
 	  );
