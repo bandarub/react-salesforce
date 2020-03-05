@@ -88,6 +88,7 @@ app.get('/property/:id', function(req, res) {
 			'.sfid = $1',
 		[req.params.id],
 		function(error, data) {
+			console.log(error,data)
 			res.json(data.rows[0]);
 		}
 	);

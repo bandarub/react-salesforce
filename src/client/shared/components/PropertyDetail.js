@@ -52,7 +52,6 @@ class PropertyDetail extends Component {
     const {
       picture__c, beds__c, baths__c, price__c, title__c, city__c, state__c, broker__c
     } = property;
-    console.log(property)
     const relatedBroker = brokers.find(item => item.sfid === broker__c);
     const sec2Data = [
       {
