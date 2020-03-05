@@ -31,21 +31,20 @@ class SideBar extends Component {
 			);
 		});
 	};
-
 	render() {
-		const { onToggle, open } = this.props;
+		const {  open,className ,onToggle} = this.props;
 		return (
 			<div className="sideBar">
+				{<i
+					onClick={onToggle}
+					className={className.join(" ")}
+				>
+					chevron_right
+				</i>}
 				<div className={open ? 'sideBar__content' : 'sideBar__content hide'}>
-					<img src={companyLogo} alt="StillArt logo" />
+					<img src={companyLogo} alt="Company logo" />
 					<div className="nav">{this.renderMenu()}</div>
 				</div>
-				<i
-					onClick={onToggle}
-					className={open ? 'material-icons toggleIcon toggleOut' : 'material-icons toggleIcon '}
-				>
-					play_arrow
-				</i>
 			</div>
 		);
 	}

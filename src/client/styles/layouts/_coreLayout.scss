@@ -5,12 +5,27 @@
 	&__content {
 		box-shadow: $box-shadow-default;
 		background: $white;
-		flex-grow: 1;
+		width:90%;
+		margin:0 auto;
 		height: 100vh;
 		overflow-y: auto;
 		overflow-x: hidden;
 	}
 	.main {
 		min-width: 27rem;
+	}
+	.toggleIcon {
+		bottom: 0.5rem;
+		position: absolute;
+		font-size: $toggleIconSize;
+		cursor: pointer;
+		transition: right 0.2s;
+		color: black;
+		z-index: 999;
+		bottom: 70rem;
+		font-size: 2rem;
+		border: 1px solid black;
+		border-radius: 50%;
+		right: 76rem;
 	}
 }

@@ -1,6 +1,36 @@
 .sideBar {
 	transition: width 0.2s;
 	position: relative;
+	cursor: pointer;
+	.display{
+		display: block;
+	}
+	.hidden{
+		display: none;
+	}
+	&:hover {
+		.hidden {
+			display: block;
+		}
+	}
+	.toggleIcon {
+		bottom: 0.5rem;
+		position: absolute;
+		font-size: $toggleIconSize;
+		cursor: pointer;
+		transition: right 0.2s;
+		color: black;
+		z-index: 999;
+		bottom: 70rem;
+		font-size: 2rem;
+		border: 1px solid black;
+		border-radius: 50%;
+		right: 76rem;
+	}
+	.toggleOut {
+		transform: rotate(180deg);
+		right: -15px !important;
+	}
 	&__content {
 		width: 20rem;
 		position: relative;
@@ -38,24 +68,10 @@
 				}
 				&:hover,
 				&.active {
-					background:$green;
+					background: $green;
 					border-right: 3.5px solid $white;
 				}
 			}
 		}
-	}
-	.toggleIcon {
-		position: absolute;
-		bottom: 0.5rem;
-		right: -5rem;
-		font-size: $toggleIconSize;
-		cursor: pointer;
-		transition: right 0.2s;
-		color: $green;
-		z-index: 999;
-	}
-	.toggleOut {
-		right: -1rem;
-		transform: rotate(180deg);
 	}
 }

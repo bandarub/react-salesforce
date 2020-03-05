@@ -1,31 +1,36 @@
 .listItem {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-    cursor: pointer;
-    &__thumbnail {
-        img {
-            max-width: 5.6rem;
-            max-height: 5.6rem;
-        }
-    }
-    &__details {
-        flex: 1;
-        border-bottom: 1px solid #c8c7cc;
-        padding: 2rem;
-        padding-left: 1rem;
+	display: flex;
+	align-items: center;
+	margin-bottom: 1rem;
+	cursor: pointer;
+	padding: 0 1rem;
+	&:hover {
+		background-color: $green;
+	}
+	&__thumbnail {
+		img {
+			max-width: 5.6rem;
+			max-height: 5.6rem;
+		}
+	}
+	&__details {
+		flex: 1;
+		border-bottom: 1px solid #c8c7cc;
+		padding: 2rem;
+		padding-left: 1rem;
         margin-left: 1rem;
-        &-title {
-            margin: 0 0 2px;
-            font-size: 1.6rem;
-            font-weight: normal;
+		&-title {
+			margin: 0 0 2px;
+			font-size: 1.6rem;
+			font-weight: normal;
             color: $black;
-        }
-        &-desc {
-            margin: 0 0 2px;
-            font-size: 1.2rem;
-            line-height: normal;
+           
+		}
+		&-desc {
+			margin: 0 0 2px;
+			font-size: 1.2rem;
+			line-height: normal;
             color: #666;
-        }
-    }
+		}
+	}
 }
