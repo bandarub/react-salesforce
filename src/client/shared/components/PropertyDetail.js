@@ -48,7 +48,10 @@ class PropertyDetail extends Component {
     if (!property || !brokers || brokers.length === 0) {
       return null
     }
-    const fav = favorites.find(item => item.sfid === property.sfid)
+    let fav=null
+    if(favorites&&favorites.length!==0){
+      fav = favorites.find(item => item.sfid === property.sfid)
+    }
     const {
       picture__c, beds__c, baths__c, price__c, title__c, city__c, state__c, broker__c
     } = property;
