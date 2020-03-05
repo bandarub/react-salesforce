@@ -38,7 +38,7 @@ class Properties extends Component {
   }
   onItemSelect = (prop) => {
     const { history } = this.props;
-    history.push(`/property/${prop.sfid}`);
+    history.push(`/property/${prop.id}`);
   };
 
   renderList = () =>{
