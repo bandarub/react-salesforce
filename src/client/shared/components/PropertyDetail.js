@@ -45,6 +45,7 @@ class PropertyDetail extends Component {
   }
   renderItem = () => {
     const { property, brokers, favorites, selected } = this.state;
+    console.log(property, brokers, favorites)
     if (!property || !brokers || brokers.length === 0 || !favorites || favorites.length === 0) {
       return null
     }

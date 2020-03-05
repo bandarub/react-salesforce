@@ -14,7 +14,6 @@ class CoreLayout extends Component {
 	}
 	render() {
         const { isMenuOpen } = this.state;
-        console.log(this.state)
 		return (
 			<div className="core-layout">
 				<SideBar open={isMenuOpen} onToggle={this.handleToggleSideBar} />
