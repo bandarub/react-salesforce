@@ -42,7 +42,9 @@ class SideBar extends Component {
 					chevron_right
 				</i>}
 				<div className={open ? 'sideBar__content' : 'sideBar__content hide'}>
+					<div className="sideBar__content-img">
 					<img src={companyLogo} alt="Company logo" />
+						</div>
 					<div className="nav">{this.renderMenu()}</div>
 				</div>
 			</div>
