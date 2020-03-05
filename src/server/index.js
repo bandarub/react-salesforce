@@ -13,7 +13,7 @@ app.use(express.static("dist"));
 app.use(bodyParser.json());
 var connectionString = process.env.HEROKU_POSTGRESQL_GRAY_URL || 'postgres://postgres:test1234@localhost:5432/salesforce';
 
-if (process.env.DATABASE_URL !== undefined) {
+if (process.env.HEROKU_POSTGRESQL_GRAY_URL !== undefined) {
 	pg.defaults.ssl = true;
   }
 
@@ -21,7 +21,7 @@ const client = new Pool({
 	connectionString
   });
 client.connect()
-
+console.log("connectionString",connectionString)
 
 var propertyTable = 'property__c';
 var favoriteTable = 'favorite__c';
