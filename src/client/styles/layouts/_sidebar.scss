@@ -32,7 +32,7 @@
 		right: -15px !important;
 	}
 	&__content {
-		width: 20rem;
+		widows: 15rem;
 		position: relative;
 		max-height: 100vh;
 		overflow: auto;
@@ -45,8 +45,8 @@
 			display: flex;
 			justify-content: center;
 			img{
-				max-width: 5rem;
-				max-height: 5rem;
+				max-width: 6rem;
+				max-height: 6rem;
 			}
 		}
 		&::-webkit-scrollbar {
@@ -60,6 +60,7 @@
 		}
 		.nav {
 			width: 100%;
+			margin-top:1rem;
 			&__navItem {
 				padding: 3% 0;
 				padding-left: 2rem;
