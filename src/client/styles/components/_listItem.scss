@@ -3,9 +3,11 @@
 	align-items: center;
 	margin-bottom: 1rem;
 	cursor: pointer;
-	padding: 0 1rem;
+    padding: 0 1rem;
+    border-radius: 10px;
 	&:hover {
-		background-color: $green;
+        background: $green;
+        transition: background .5s;
 	}
 	&__thumbnail {
 		img {
