@@ -5,7 +5,7 @@
     "app-cloud"
   ],
   "engines": {
-    "node": "v8.11.1"
+    "node": "v10.16.3"
   },
   "repository": "https://github.com/bandarub/react-salesforce",
   "version": "1.0.0",
