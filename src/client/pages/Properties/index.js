@@ -17,7 +17,7 @@ class Properties extends Component {
       properties: null,
       searchInput: "",
       filteredProperties: [],
-      items: Array.from({ length: 100 })
+      items: Array.from({ length: 30 })
     };
   }
 
@@ -31,9 +31,9 @@ class Properties extends Component {
     // 100 more records in 1 secs
     setInterval(() => {
       this.setState({
-        items: this.state.items.concat(Array.from({ length: 100 }))
+        items: this.state.items.concat(Array.from({ length: 30 }))
       });
-    }, 1000);
+    }, 1200);
   };
   onFieldChange = (e) => {
     const { value } = e.target
