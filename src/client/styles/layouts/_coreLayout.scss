@@ -24,11 +24,10 @@
 		font-size: 2rem;
 		border: 1px solid black;
 		border-radius: 50%;
-		left: 4%;
+		left: 6.5%;
 		top: 0;
 		.toggleOut {
 			transform: rotate(180deg);
-			left: 6%;
 		}
 		&:hover {
 			background-color: #00a3da;

@@ -17,7 +17,7 @@ class Properties extends Component {
       properties: null,
       searchInput: "",
       filteredProperties: [],
-      items: Array.from({ length: 20 })
+      items: Array.from({ length: 100 })
     };
   }
 
@@ -31,7 +31,7 @@ class Properties extends Component {
     // 20 more records in 1.5 secs
     setTimeout(() => {
       this.setState({
-        items: this.state.items.concat(Array.from({ length: 20 }))
+        items: this.state.items.concat(Array.from({ length: 100 }))
       });
     }, 1500);
   };
@@ -62,7 +62,8 @@ class Properties extends Component {
     )
   }
   renderItem = (index) => {
-    const { filteredProperties } = this.state
+    let { filteredProperties } = this.state
+    console.log(filteredProperties.length)
     if(index>=filteredProperties.length){
       return
     }
