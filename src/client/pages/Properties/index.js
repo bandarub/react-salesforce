@@ -43,9 +43,10 @@ class Properties extends Component {
 
   renderList = () =>{
       const {filteredProperties} = this.state
-      if(!filteredProperties){
-        return
-    } 
+      if(filteredProperties&&filteredProperties.length===0){
+        return<div className="statement">No search results found</div>
+      } 
+      console.log(filteredProperties)
       return filteredProperties.map((prop,key)=>
         <ListItem item={normalizeProperty(prop)} key={key} data={prop} onClick={this.onItemSelect}/>
      )

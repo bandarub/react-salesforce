@@ -46,7 +46,7 @@ class Favorites extends Component {
 				<Heading title="Favorites" />
 				<div className="favorites__list">
 					{!favorites || favorites.length === 0 ? (
-						<p className="favorites__list-statement">Favorite list is empty</p>
+						<p className="statement">Favorite list is empty</p>
 					) : (
 						this.renderList()
 					)}

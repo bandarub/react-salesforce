@@ -1,9 +1,11 @@
 .listItem {
 	display: flex;
 	align-items: center;
-	margin-bottom: 1rem;
+	margin-bottom: 1.5rem;
 	cursor: pointer;
-    padding: 0 1rem;
+	width:80%;
+	margin:0 auto;
+    padding: 1.5rem 1rem;
     border-radius: 10px;
 	&:hover {
         background: $green;
@@ -23,14 +25,14 @@
         margin-left: 1rem;
 		&-title {
 			margin: 0 0 2px;
-			font-size: 20px;
+			font-size: 1.5rem;
 			font-weight: normal;
             color: $black;
            
 		}
 		&-desc {
 			margin: 0 0 2px;
-			font-size: 15px;
+			font-size: 1.2rem;
 			line-height: normal;
             color: #666;
 		}
