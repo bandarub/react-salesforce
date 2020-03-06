@@ -58,6 +58,8 @@ app.get('/property', function(req, res) {
 });
 
 app.get('/property/:id', function(req, res) {
+	console.log(req.params)
+
 	client.query(
 		'SELECT ' +
 			propertyTable +
@@ -125,6 +127,7 @@ app.post('/favorite', function(req, res) {
 });
 
 app.delete('/favorite/:sfid', function(req, res) {
+	console.log(req.params.sfid)
 	client.query('DELETE FROM ' + favoriteTable + 'WHERE sfid = ($1)' , [req.params.sfid], function(error, data) {
 		res.json(data);
 	});

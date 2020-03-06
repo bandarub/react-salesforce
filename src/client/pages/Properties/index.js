@@ -28,12 +28,12 @@ class Properties extends Component {
   }
   fetchMoreData = () => {
     // a fake async api call like which sends
-    // 20 more records in 1.5 secs
-    setTimeout(() => {
+    // 100 more records in 1 secs
+    setInterval(() => {
       this.setState({
         items: this.state.items.concat(Array.from({ length: 100 }))
       });
-    }, 1500);
+    }, 1000);
   };
   onFieldChange = (e) => {
     const { value } = e.target
@@ -63,7 +63,6 @@ class Properties extends Component {
   }
   renderItem = (index) => {
     let { filteredProperties } = this.state
-    console.log(filteredProperties.length)
     if(index>=filteredProperties.length){
       return
     }

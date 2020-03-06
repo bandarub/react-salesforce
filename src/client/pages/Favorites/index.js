@@ -32,12 +32,12 @@ class Favorites extends Component {
 				data={data}
 				onClick={this.onItemSelect}
 				deletable={false}
-				onClickDelete={this.onFavDelete}
+				onClickDelete={(e)=>this.onFavDelete(data)}
 			/>
 		))
 	}
-	onFavDelete = item => {
-		axios.delete(`/favorite/${item.sfid}`).then(res => console.log(res))
+	onFavDelete = (item) => {
+		axios.delete(`/favorite/${item.id}`).then(res => console.log(res))
 	}
 	render() {
 		const { favorites } = this.state
