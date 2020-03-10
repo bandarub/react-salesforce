@@ -10,8 +10,6 @@ class PropertyDetail extends Component {
     super(props);
     this.state = {
       property: null,
-      brokers: null,
-      favorites: null,
       isFavorite: false,
       selected: false
     };
@@ -21,13 +19,9 @@ class PropertyDetail extends Component {
     const { id } = this.props.match.params;
     axios.get(`/property/${id}`)
       .then(res => this.setState({ property: res.data }))
-    axios.get('/broker')
-      .then(res => this.setState({ brokers: res.data }))
-    axios.get('/favorite')
-      .then(res => this.setState({ favorites: res.data }))
   }
   onFavAdd = () => {
-    const { property, favorites } = this.state;
+    const { property } = this.state;
     axios.post("/favorite", { property__c: property.sfid })
       .then(res => {
         if (res.data) {
@@ -44,12 +38,13 @@ class PropertyDetail extends Component {
     this.setState({ selected: true })
   }
   renderItem = () => {
-    const { property, brokers, favorites, selected } = this.state;
+    const { brokers, favorites } = this.props
+    const { property, selected } = this.state;
     if (!property || !brokers || brokers.length === 0) {
       return null
     }
-    let fav=null
-    if(favorites&&favorites.length!==0){
+    let fav = null
+    if (favorites && favorites.length !== 0) {
       fav = favorites.find(item => item.sfid === property.sfid)
     }
     const {
@@ -121,8 +116,8 @@ class PropertyDetail extends Component {
   };
 
   render() {
-    const { property, brokers, prevPath } = this.state;
-    const { location } = this.props
+    const { brokers } = this.props
+    const { property } = this.state;
     if (!property || !brokers || brokers.length === 0) {
       return null;
     }

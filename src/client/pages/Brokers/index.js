@@ -6,41 +6,42 @@ import ListItem from '../../shared/components/ListItem';
 import { normalizeBrokerData } from '../../utils';
 
 class Brokers extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      brokers: null
-    };
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			brokers: null
+		};
+	}
 
-  componentDidMount() {
-    axios.get('/broker')
-      .then(res => this.setState({ brokers: res.data }))
-  }
+	componentDidMount() {
+		const { brokers } = this.props
+		this.setState({brokers})
+
+	}
 
 	onItemSelect = (broker) => {
-	  const { history } = this.props;
-	  history.push(`/broker/${broker.sfid}`);
+		const { history } = this.props;
+		history.push(`/broker/${broker.sfid}`);
 	};
 
 	renderList = () => {
-	  const { brokers } = this.state;
-	  return brokers.map((broker, key) => (
-  <ListItem key={key} item={normalizeBrokerData(broker)} onClick={this.onItemSelect} data={broker} />
-	  ));
+		const { brokers } = this.state;
+		return brokers.map((broker, key) => (
+			<ListItem key={key} item={normalizeBrokerData(broker)} onClick={this.onItemSelect} data={broker} />
+		));
 	};
 
 	render() {
-	  const { brokers } = this.state;
-	  
-	  return (
-  <div className="brokers">
-    <Heading title="Brokers" />
-	{(!brokers || brokers.length === 0)?null: <div className="brokers__list">{this.renderList()}</div>
-	  }
-   
-  </div>
-	  );
+		const { brokers } = this.state;
+
+		return (
+			<div className="brokers">
+				<Heading title="Brokers" />
+				{(!brokers || brokers.length === 0) ? null : <div className="brokers__list">{this.renderList()}</div>
+				}
+
+			</div>
+		);
 	}
 }
 

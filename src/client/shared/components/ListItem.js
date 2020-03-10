@@ -1,7 +1,8 @@
 import React from 'react';
 import { formatter } from '../../constants';
 
-const ListItem = ({ item, onClick, data, deletable, onClickDelete }) => {
+const ListItem = ({ item, onClick, data, from, isFavorite }) => {
+  console.log(from)
   return <div className="listItem" >
     <div className="listItem__thumbnail" onClick={() => onClick(data)}>
       <img src={item.thumbnail} alt="thumbnail" />
@@ -16,10 +17,12 @@ const ListItem = ({ item, onClick, data, deletable, onClickDelete }) => {
           {item.address}
         </p>}
       </div>
-      {deletable && <div onClick={(e) => onClickDelete(e,data)}>
-        <i className="material-icons">
-          delete
-</i></div>}
+      {from === "property" &&
+        <div className="fav">
+          <i className="material-icons">
+            {isFavorite ? "star" : ""}
+          </i>
+        </div>}
     </>
   </div>
 }

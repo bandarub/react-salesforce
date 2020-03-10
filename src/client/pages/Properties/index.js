@@ -17,14 +17,16 @@ class Properties extends Component {
       properties: null,
       searchInput: "",
       filteredProperties: [],
+      isFavorite: false,
       items: Array.from({ length: 20 })
     };
   }
 
   componentDidMount() {
-    axios.get('/property')
-      .then(res => this.setState({ properties: res.data, filteredProperties: res.data }))
-      .catch(err => console.log("error:", err))
+    const { properties } = this.props
+    if(properties&&properties.length!==0){
+      this.setState({ filteredProperties: properties })
+    }
   }
   fetchMoreData = () => {
     // a fake async api call like which sends
@@ -52,50 +54,46 @@ class Properties extends Component {
     history.push(`/property/${prop.sfid}`);
   };
 
-  renderList = () => {
-    const { filteredProperties } = this.state
-    if (filteredProperties && filteredProperties.length === 0) {
-      return <div className="statement">No search results found</div>
-    }
-    return filteredProperties.map((prop, key) =>
-      <ListItem item={normalizeProperty(prop)} key={key} data={prop} onClick={this.onItemSelect} />
-    )
-  }
   renderItem = (index) => {
     let { filteredProperties } = this.state
-    if(index>=filteredProperties.length){
+    const {favorites} =this.props
+    let found
+    if(index<filteredProperties.length){
+      found = favorites.find(item=>item.sfid===filteredProperties[index].sfid)
+    } 
+    if (index >= filteredProperties.length) {
       return
     }
-    return <ListItem item={normalizeProperty(filteredProperties[index])} key={index} data={filteredProperties[index]} onClick={this.onItemSelect} />
+    return <ListItem item={normalizeProperty(filteredProperties[index])} from="property" key={index} data={filteredProperties[index]} onClick={this.onItemSelect} isFavorite={found} />
   }
 
 
   render() {
-    const { searchInput, properties, filteredProperties } = this.state
+    const { searchInput,filteredProperties } = this.state
     return <div className="properties">
       <Heading title="Properties" link={false} />
       <input value={searchInput} placeholder="Type property title to search...." onChange={this.onFieldChange} />
 
-      {filteredProperties&&filteredProperties.length===0? <div className="statement">No search results found</div> : <div>
-      <div style={{ overflow: 'auto', maxHeight: "75vh" }}>
-        <InfiniteScroll
-          dataLength={this.state.items.length}
-          next={this.fetchMoreData}
-          hasMore={true}
-          loader={<h4>Loading...</h4>}
-          endMessage={
-            <p style={{textAlign: 'center'}}>
-              <b>Yay! You have seen it all</b>
-            </p>
-          }
-        >
-          {this.state.items.map((i, index) => (
-           this.renderItem(index)
-          ))}
-        </InfiniteScroll>
+      {filteredProperties && filteredProperties.length === 0 ? <div className="statement">No search results found</div> : <div>
+        <div style={{ overflow: 'auto', maxHeight: "75vh" }}>
+          <InfiniteScroll
+            dataLength={this.state.items.length}
+            next={this.fetchMoreData}
+            hasMore={true}
+            loader={<h4>Loading...</h4>}
+            endMessage={
+              <p style={{ textAlign: 'center' }}>
+                <b>Yay! You have seen it all</b>
+              </p>
+            }
+          >
+            {this.state.items.map((i, index) => (
+              this.renderItem(index)
+            ))}
+          </InfiniteScroll>
         </div>
       </div>}
-      </div>;
+    </div>;
   }
 }
 
