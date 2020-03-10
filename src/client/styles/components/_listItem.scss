@@ -1,10 +1,12 @@
 .listItem {
 	display: flex;
-	align-items: center;
-	cursor: pointer;
-	width: 80%;
-	margin: 2rem auto;
-	padding: 0.5rem;
+    align-items: center;
+    cursor: pointer;
+    width: 80%;
+    margin: 3rem auto;
+    padding: 0.5rem;
+    padding-right: 0;
+    padding-bottom: 0;
 
 	&:hover {
 		transition: background 0.5s;
