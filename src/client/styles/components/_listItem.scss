@@ -23,6 +23,9 @@
 	}
 	&__details {
 		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 		border-bottom: 1px solid #c8c7cc;
 		padding: 1rem;
 		padding-left: 1rem;
@@ -43,7 +46,6 @@
 	.fav{
 		i{
 			color: $green;
-			padding-right:2rem;
 		}
 	}
 }
