@@ -18,16 +18,14 @@
 		margin: 0 auto;
 		img {
 			width: 100%;
-			height: 90vh;
 		}
 		&__note {
 			position: absolute;
-			bottom: 5rem;
+			bottom: 3rem;
 			padding: 2rem;
 			background: $green;
 			color: $white;
 			font-size: 2rem;
-
 			text-align: left;
 		}
 	}

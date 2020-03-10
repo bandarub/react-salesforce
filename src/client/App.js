@@ -65,7 +65,7 @@ class App extends Component {
 							/>
 							<Route
 								exact
-								component={() => <BrokerDetails />}
+								component={() => <BrokerDetails properties={properties}/>}
 								path={routerPath.broker}
 							/>
 						</Switch>

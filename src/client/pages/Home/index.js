@@ -17,8 +17,13 @@ class Home extends Component {
 	renderPage = () => {
 		return <Carousel showThumbs={false} autoPlay={true} emulateTouch={true} infiniteLoop={true}>
 			{data.map((item, key) => {
-				return <div key={key} className="item">
-					<img src={item.image} />
+				let divStyle = {
+					backgroundImage:`url(${item.image})`,
+					width:"100vw",
+					height:"90vh",
+					backgroundSize: "cover"
+				}
+				return <div key={key} className="item" style={divStyle}>
 					<p className="item__note">{item.note}</p>
 				</div>
 			})}
