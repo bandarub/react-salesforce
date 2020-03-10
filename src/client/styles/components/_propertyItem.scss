@@ -6,6 +6,22 @@
 		border: 1px solid gray;
 		margin: 0 auto;
 		width: 70%;
+		.ask{
+			text-decoration: none;
+			font-size: 1.5rem;
+			margin-bottom: 1rem;
+
+			label{
+				display: flex;
+				justify-content: flex-end;
+				padding-right: 1rem;
+				cursor: pointer;
+				&:hover{
+					color:$green
+				}
+			}
+			
+		}
 	}
 	&__details {
 		padding: 2rem;
@@ -99,5 +115,6 @@
 				}
 			}
 		}
+		
 	}
 }

@@ -54,7 +54,7 @@ class BrokerDetail extends Component {
 				<i className="material-icons">{item.icon}</i>
 				<div className="item__details">
 					{item.text === 'Email' ? (
-						<a href={`mailto:${item.value}`} target="_blank">
+						<a href={`mailto:${item.value}?subject=Inquiring about properties`} target="_blank">
 							<label>{item.text}</label>
 							<p>{item.value}</p>
 						</a>
