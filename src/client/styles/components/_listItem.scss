@@ -1,15 +1,19 @@
 .listItem {
 	display: flex;
 	align-items: center;
-	margin-bottom: 1.5rem;
 	cursor: pointer;
-	width:80%;
-	margin:0 auto;
-    padding: 1.5rem 1rem;
-    border-radius: 10px;
+	width: 80%;
+	margin: 2rem auto;
+	margin-bottom: 2.5rem;
+
 	&:hover {
-        background: $green;
-        transition: background .5s;
+		transition: background 0.5s;
+		border-radius: none;
+		border-top:0.5px solid $green;
+		border-right:0.5px solid $green;
+		position: relative;
+		top: -10px;
+		box-shadow: 3px -5px 6px 0px rgba(132,191,65,1);
 	}
 	&__thumbnail {
 		img {
@@ -22,19 +26,18 @@
 		border-bottom: 1px solid #c8c7cc;
 		padding: 1rem;
 		padding-left: 1rem;
-        margin-left: 1rem;
+		margin-left: 1rem;
 		&-title {
 			margin: 0 0 2px;
 			font-size: 1.5rem;
 			font-weight: normal;
-            color: $black;
-           
+			color: $black;
 		}
 		&-desc {
 			margin: 0 0 2px;
 			font-size: 1.2rem;
 			line-height: normal;
-            color: #666;
+			color: #666;
 		}
 	}
 }

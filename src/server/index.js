@@ -28,13 +28,10 @@ var brokerTable = 'broker__c';
 
 // setup the demo data if needed
 client.query('SELECT * FROM salesforce.broker__c', function(error, data) {
-	console.log("error",error)
 	if (error) {
 		   //for initial setup of data
 		client.query('SELECT * FROM broker__c', function(error, data) {
 		  if (error !== null) {
-			console.log("connectionString",connectionString)
-
 			console.log('Loading Demo Data...');
 			require('./db/index.js')(client);
 			console.log('Done Loading Demo Data!');
@@ -52,13 +49,11 @@ client.query('SELECT * FROM salesforce.broker__c', function(error, data) {
 
 app.get('/property', function(req, res) {
 	client.query('SELECT * FROM ' + propertyTable, function(error, data) {
-		console.log(error)
 		res.json(data.rows);
 	});
 });
 
 app.get('/property/:id', function(req, res) {
-	console.log(req.params)
 
 	client.query(
 		'SELECT ' +
@@ -90,7 +85,6 @@ app.get('/property/:id', function(req, res) {
 			'.sfid = $1',
 		[req.params.id],
 		function(error, data) {
-			console.log(error,data)
 			res.json(data.rows[0]);
 		}
 	);
@@ -126,12 +120,6 @@ app.post('/favorite', function(req, res) {
 	});
 });
 
-app.delete('/favorite/:sfid', function(req, res) {
-	console.log(req.params.sfid)
-	client.query('DELETE FROM ' + favoriteTable + 'WHERE sfid = ($1)' , [req.params.sfid], function(error, data) {
-		res.json(data);
-	});
-});
 
 app.get('/broker', function(req, res) {
 	client.query('SELECT * FROM ' + brokerTable, function(error, data) {

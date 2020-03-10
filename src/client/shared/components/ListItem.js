@@ -16,7 +16,7 @@ const ListItem = ({ item, onClick, data, deletable, onClickDelete }) => {
           {item.address}
         </p>}
       </div>
-      {deletable && <div onClick={() => onClickDelete(data)}>
+      {deletable && <div onClick={(e) => onClickDelete(e,data)}>
         <i className="material-icons">
           delete
 </i></div>}
