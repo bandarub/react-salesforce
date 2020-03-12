@@ -1,7 +1,7 @@
 .sideBar {
 	transition: width 0.2s;
 	position: relative;
-	width:20%;
+	min-width: 17%;
 	cursor: pointer;
 	.display {
 		display: block;
