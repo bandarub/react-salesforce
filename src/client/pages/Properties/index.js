@@ -113,7 +113,7 @@ class Properties extends Component {
 								dataLength={this.state.items.length}
 								next={this.fetchMoreData}
 								hasMore={true}
-								loader={<h4>Loading...</h4>}
+								loader={<Loading/>}
 							>
 								{this.state.items.map((i, index) => this.renderItem(index))}
 							</InfiniteScroll>
