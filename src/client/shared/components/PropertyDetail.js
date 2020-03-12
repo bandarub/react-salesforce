@@ -125,13 +125,17 @@ class PropertyDetail extends Component {
 						</div>
 					</div>
 				</div>
-				<a
-					href={`mailto:${relatedBroker.email__c}?subject=Inquiring about property ${title__c} id is "${property.sfid}"&body=link:${picture__c}%0D%0ACity:${city__c}%0D%0AState:${state__c}%0D%0AZip:${zip__c}`}
-					target="_blank"
-					className="ask"
-				>
-					<label>Contact</label>
-				</a>
+
+				<label className="ask">
+					Have questions?{' '}
+					<a
+						href={`mailto:${relatedBroker.email__c}?subject=Inquiring about property ${title__c} id is "${property.sfid}"&body=link:${picture__c}%0D%0ACity:${city__c}%0D%0AState:${state__c}%0D%0AZip:${zip__c}`}
+						target="_blank"
+					>
+						{' '}
+						Contact
+					</a>
+				</label>
 			</div>
 		)
 	}
@@ -146,7 +150,6 @@ class PropertyDetail extends Component {
 			<div className="property">
 				<Heading
 					title={property.title__c}
-					linkTitle="Back"
 					icon="keyboard_arrow_left"
 					link={true}
 				/>

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
-import ReactList from 'react-list'
 import InfiniteScroll from 'react-infinite-scroll-component'
+import axios from 'axios'
 
 import Heading from '../../shared/components/Heading'
 import ListItem from '../../shared/components/ListItem'
-import axios from 'axios'
+import Loading from '../../shared/components/Loading'
 
 import { normalizeProperty } from '../../utils'
 
@@ -93,17 +93,19 @@ class Properties extends Component {
 	}
 
 	render() {
-		const { searchInput, filteredProperties,link } = this.state
+		const { searchInput, filteredProperties, link } = this.state
+		const { loading } = this.props
 		return (
 			<div className="properties">
-				<Heading title="Properties" link={link} linkTitle="Back"/>
+				<Heading title="Properties" link={link} icon="keyboard_arrow_left" />
 				<input
 					value={searchInput}
 					placeholder="Type property title to search...."
 					onChange={this.onFieldChange}
 				/>
-
-				{filteredProperties && filteredProperties.length === 0 ? (
+				{loading ? (
+					<Loading />
+				) : filteredProperties && filteredProperties.length === 0 ? (
 					<div className="statement">No search results found</div>
 				) : (
 					<div>

@@ -4,6 +4,8 @@ import axios from 'axios'
 
 import Heading from '../../shared/components/Heading'
 import ListItem from '../../shared/components/ListItem'
+import Loading from '../../shared/components/Loading'
+
 import { normalizeProperty } from '../../utils'
 
 class Favorites extends Component {
@@ -15,7 +17,8 @@ class Favorites extends Component {
 	}
 
 	componentDidMount() {
-		axios.get('/favorite').then(res => this.setState({ favorites: res.data }))
+		const {favorites}=this.props
+		this.setState({favorites})
 	}
 
 	onItemSelect = prop => {
@@ -37,10 +40,11 @@ class Favorites extends Component {
 		))
 	}
 	render() {
-		const { favorites } = this.state
+		const { favorites,loading } = this.state
 		return (
 			<div className="favorites">
 				<Heading title="Favorites" />
+				{loading&&<Loading/>}
 				<div className="favorites__list">
 					{!favorites || favorites.length === 0 ? (
 						<p className="statement">Favorite list is empty</p>

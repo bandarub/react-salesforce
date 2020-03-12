@@ -1,4 +1,7 @@
 .brokerDetails {
+	i {
+		font-size: 2rem;
+	}
 	&__info {
 		width: 80%;
 		margin: 10rem auto;
@@ -23,6 +26,11 @@
 					padding-left: 2rem;
 					a {
 						text-decoration: none;
+						p {
+							&:hover {
+								color: $green;
+							}
+						}
 					}
 					label {
 						color: gray;
@@ -49,7 +57,7 @@
 			}
 			h2 {
 				font-size: 2.5rem;
-				margin-top: .5rem;
+				margin-top: 0.5rem;
 				color: white;
 				margin-bottom: 0;
 			}
@@ -59,17 +67,5 @@
 				margin-top: 0;
 			}
 		}
-	}
-	.related{
-		display: flex;
-    justify-content: flex-end;
-    width: 90%;
-    text-decoration: none;
-    color: black;
-    font-size: 1.5rem;
-	margin-top: -7rem;
-	&:hover{
-		color:$green
-	}
 	}
 }

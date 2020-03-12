@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import axios from 'axios';
+//Components
 import Heading from '../../shared/components/Heading';
 import ListItem from '../../shared/components/ListItem';
+import Loading from '../../shared/components/Loading';
+
+//utils
 import { normalizeBrokerData } from '../../utils';
 
 class Brokers extends Component {
@@ -16,7 +20,6 @@ class Brokers extends Component {
 	componentDidMount() {
 		const { brokers } = this.props
 		this.setState({brokers})
-
 	}
 
 	onItemSelect = (broker) => {
@@ -33,13 +36,14 @@ class Brokers extends Component {
 
 	render() {
 		const { brokers } = this.state;
+		const {loading,error}=this.props
 
 		return (
 			<div className="brokers">
 				<Heading title="Brokers" />
+				{loading&&<Loading/>}
 				{(!brokers || brokers.length === 0) ? null : <div className="brokers__list">{this.renderList()}</div>
 				}
-
 			</div>
 		);
 	}

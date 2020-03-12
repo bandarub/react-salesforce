@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
-
-import image1 from '../../assets/images/slide_properties.jpg'
-import image2 from '../../assets/images/slide_brokers.jpg'
-import image3 from '../../assets/images/slide_favorites.jpg'
 import { Carousel } from 'react-responsive-carousel';
-import { data } from '../../constants'
+
 import Heading from '../../shared/components/Heading'
+import { data } from '../../constants'
 
 class Home extends Component {
 	constructor(props) {
@@ -39,7 +36,7 @@ class Home extends Component {
 	render() {
 		return (
 			<div className="home">
-				<Heading title="Welcome" />
+				<Heading title="Welcome"/>
 				{this.renderPage()}
 			</div>
 		)

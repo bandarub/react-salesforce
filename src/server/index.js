@@ -46,13 +46,13 @@ client.query('SELECT * FROM salesforce.broker__c', function(error, data) {
 	  }
 });
 
-
+//To get properties
 app.get('/property', function(req, res) {
 	client.query('SELECT * FROM ' + propertyTable, function(error, data) {
 		res.json(data.rows);
 	});
 });
-
+//To get property based on Id
 app.get('/property/:id', function(req, res) {
 
 	client.query(
@@ -89,7 +89,7 @@ app.get('/property/:id', function(req, res) {
 		}
 	);
 });
-
+//Get list of favorites
 app.get('/favorite', function(req, res) {
 	client.query(
 		'SELECT ' +
@@ -110,7 +110,7 @@ app.get('/favorite', function(req, res) {
 		}
 	);
 });
-
+//Add property to favorites
 app.post('/favorite', function(req, res) {
 	client.query('INSERT INTO ' + favoriteTable + ' (property__c) VALUES ($1)', [req.body.property__c], function(
 		error,
@@ -120,13 +120,13 @@ app.post('/favorite', function(req, res) {
 	});
 });
 
-
+//Get list of brokers
 app.get('/broker', function(req, res) {
 	client.query('SELECT * FROM ' + brokerTable, function(error, data) {
 		res.json(data.rows);
 	});
 });
-
+//To get details of broker based on sfid
 app.get('/broker/:sfid', function(req, res) {
 	client.query('SELECT * FROM ' + brokerTable + ' WHERE sfid = $1', [req.params.sfid], function(error, data) {
 		res.json(data.rows[0]);
@@ -136,5 +136,3 @@ app.get('/broker/:sfid', function(req, res) {
 var port = process.env.PORT || 5000;
 
 app.listen(port);
-
-//console.log('Listening at: http://localhost:' + port);

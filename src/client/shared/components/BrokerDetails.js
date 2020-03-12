@@ -13,7 +13,7 @@ class BrokerDetail extends Component {
 	}
 
 	componentDidMount() {
-    const {properties} =this.props
+		const { properties } = this.props
 		const { id } = this.props.match.params
 		let related = []
 		if (properties && properties.length !== 0) {
@@ -25,7 +25,7 @@ class BrokerDetail extends Component {
 	}
 
 	renderData = () => {
-		const { brokerData } = this.state
+		const { brokerData, related } = this.state
 		const { phone__c, email__c } = brokerData
 		const data = [
 			{
@@ -47,6 +47,11 @@ class BrokerDetail extends Component {
 				icon: 'mail',
 				text: 'Email',
 				value: email__c
+			},
+			{
+				icon: 'home',
+				text: 'Related properties',
+				value: 'Related'
 			}
 		]
 		return data.map((item, key) => (
@@ -54,10 +59,23 @@ class BrokerDetail extends Component {
 				<i className="material-icons">{item.icon}</i>
 				<div className="item__details">
 					{item.text === 'Email' ? (
-						<a href={`mailto:${item.value}?subject=Inquiring about properties`} target="_blank">
+						<a
+							href={`mailto:${item.value}?subject=Inquiring about properties`}
+							target="_blank"
+						>
 							<label>{item.text}</label>
 							<p>{item.value}</p>
 						</a>
+					) : item.value === 'Related' ? (
+						<Link
+							to={{
+								pathname: '/property',
+								query: { related: related, page: 'broker' }
+							}}
+						>
+							<label>Related Properties</label>
+							<p>Click here</p>
+						</Link>
 					) : (
 						<div>
 							<label>{item.text}</label>
@@ -70,14 +88,15 @@ class BrokerDetail extends Component {
 	}
 
 	render() {
-    const { brokerData, related } = this.state
+		const { brokerData } = this.state
+
 		if (!brokerData) {
 			return null
 		}
 		const { picture__c, name, title__c } = brokerData
 		return (
 			<div className="brokerDetails">
-				<Heading title="Broker" linkTitle="Back" icon="arrow_left" link />
+				<Heading title="Broker" icon="arrow_left" link icon="keyboard_arrow_left"/>
 				<div className="brokerDetails__info">
 					<div className="brokerDetails__info-imageContainer">
 						<img src={picture__c} />
@@ -86,9 +105,6 @@ class BrokerDetail extends Component {
 					</div>
 					<div className="brokerDetails__info-list"> {this.renderData()}</div>
 				</div>
-				<Link to={{ pathname: '/property', query: { related: related,page:"broker" } }} className="related">
-					Related Properties
-				</Link>
 			</div>
 		)
 	}

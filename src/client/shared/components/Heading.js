@@ -9,7 +9,7 @@ class Heading extends Component {
 
 	render() {
 	  const {
-	    title, linkTitle, link, history
+	    title, linkTitle, link, history,icon
 	  } = this.props;
 	  const headingClassName = ['heading'];
 
@@ -17,8 +17,7 @@ class Heading extends Component {
   <div className={headingClassName.join(' ')}>
     {link && (
     <div onClick={this.rendePrevPage} className="link">
-      <i className="material-icons">keyboard_arrow_left</i>
-      {linkTitle}
+      <i className="material-icons" title="Go back">{icon}</i>
     </div>
     )}
     <h2 className="heading__text">{title}</h2>
