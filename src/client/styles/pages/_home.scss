@@ -29,4 +29,22 @@
 			text-align: left;
 		}
 	}
+.carousel .control-prev.control-arrow:before{
+	border-right: 1.5rem solid #fff;
+}
+.carousel .control-arrow:before, .carousel.carousel-slider .control-arrow:before{
+	border-top: 1rem solid transparent;
+	border-bottom: 1rem solid transparent;
+	
+}
+.carousel .control-next.control-arrow:before{
+	border-left: 1.5rem solid #fff;
+}
+.carousel .control-dots{
+	.dot{
+		height:10px;
+		width:10px;
+	}
+	margin: 5px 0;
+}
 }
