@@ -108,8 +108,7 @@ class Properties extends Component {
 				) : filteredProperties && filteredProperties.length === 0 ? (
 					<div className="statement">No search results found</div>
 				) : (
-					<div>
-						<div style={{ overflow: 'auto', maxHeight: '75vh' }}>
+						<div style={{ overflow: 'auto', maxHeight: '75vh' }} className="properties__list">
 							<InfiniteScroll
 								dataLength={this.state.items.length}
 								next={this.fetchMoreData}
@@ -119,7 +118,6 @@ class Properties extends Component {
 								{this.state.items.map((i, index) => this.renderItem(index))}
 							</InfiniteScroll>
 						</div>
-					</div>
 				)}
 			</div>
 		)

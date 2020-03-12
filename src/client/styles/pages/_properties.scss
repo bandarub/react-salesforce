@@ -14,13 +14,7 @@
 		line-height: 3;
 	}
 	&__list {
-		display: flex;
-		flex-direction: column;
-		padding: 2rem;
-		width: 80%;
-		overflow: auto;
-		height: 75vh;
-		margin: 0 auto;
+		padding-bottom: 2rem;
 		a {
 			text-decoration: none;
 		}

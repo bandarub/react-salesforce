@@ -6,9 +6,8 @@
 		box-shadow: $box-shadow-default;
 		background: $white;
 		width: 85%;
+		height: 100vh;
 		margin: 0 auto;
-		overflow-y: auto;
-		overflow-x: hidden;
 	}
 	.main {
 		min-width: 27rem;
