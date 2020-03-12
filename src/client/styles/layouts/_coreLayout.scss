@@ -2,13 +2,13 @@
 	display: flex;
 	margin: 0 auto;
 	position: relative;
-	margin: 0 auto;
 	overflow-y: auto;
 	overflow-x: hidden;
 	&__content {
 		box-shadow: $box-shadow-default;
 		background: $white;
 		width: 85%;
+		margin: 0 auto;
 	}
 	.main {
 		min-width: 27rem;
