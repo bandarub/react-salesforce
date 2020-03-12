@@ -42,7 +42,7 @@ class Properties extends Component {
 	}
 	fetchMoreData = () => {
 		// a fake async api call like which sends
-		// 100 more records in 1 secs
+		// 20 more records in 1.5 secs
 		setInterval(() => {
 			this.setState({
 				items: this.state.items.concat(Array.from({ length: 20 }))
@@ -115,11 +115,6 @@ class Properties extends Component {
 								next={this.fetchMoreData}
 								hasMore={true}
 								loader={<h4>Loading...</h4>}
-								endMessage={
-									<p style={{ textAlign: 'center' }}>
-										<b>Yay! You have seen it all</b>
-									</p>
-								}
 							>
 								{this.state.items.map((i, index) => this.renderItem(index))}
 							</InfiniteScroll>
