@@ -1,0 +1,32 @@
+//
+// Typography
+//
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	-webkit-overflow-scrolling: touch;
+}
+
+body
+{
+	font-family: Roboto, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica,
+		Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+	margin: 0;
+	display: block;
+}
+
+
+//MaterialUI Icons
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+i {
+	cursor: pointer;
+}
+
+
+a {
+	text-decoration: none;
+}
