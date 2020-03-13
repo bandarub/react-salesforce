@@ -129,7 +129,7 @@ class PropertyDetail extends Component {
 				<label className="ask">
 					Have questions?{' '}
 					<a
-						href={`mailto:${relatedBroker.email__c}?subject=Inquiring about property ${title__c} id is "${property.sfid}"&body=link:${picture__c}%0D%0ACity:${city__c}%0D%0AState:${state__c}%0D%0AZip:${zip__c}`}
+						href={`mailto:${relatedBroker.email__c}?subject=Inquiring about property ${title__c} id is ${property.sfid} &body=link:${picture__c}%0D%0ACity:${city__c}%0D%0AState:${state__c}%0D%0AZip:${zip__c}`}
 						target="_blank"
 					>
 						{' '}
