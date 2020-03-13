@@ -36,7 +36,7 @@ class Brokers extends Component {
 
 	render() {
 		const { brokers } = this.state;
-		const {loading,error}=this.props
+		const {loading}=this.props
 
 		return (
 			<div className="brokers">

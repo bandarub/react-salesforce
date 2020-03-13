@@ -17,8 +17,8 @@ class Favorites extends Component {
 	}
 
 	componentDidMount() {
-		const {favorites}=this.props
-		this.setState({favorites})
+		const { favorites } = this.props
+		this.setState({ favorites })
 	}
 
 	onItemSelect = prop => {
@@ -40,11 +40,12 @@ class Favorites extends Component {
 		))
 	}
 	render() {
-		const { favorites,loading } = this.state
+		const { favorites } = this.state
+		const { loading } = this.props
 		return (
 			<div className="favorites">
 				<Heading title="Favorites" />
-				{loading&&<Loading/>}
+				{loading && <Loading />}
 				<div className="favorites__list">
 					{!favorites || favorites.length === 0 ? (
 						<p className="statement">Favorite list is empty</p>
